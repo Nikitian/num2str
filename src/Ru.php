@@ -57,7 +57,7 @@ class Ru extends Base
         );
         $unit = array(// Units
             array($second[0], $second[1], $second[2], 1),
-            array($main[0], $main[1], $main[2], 0),
+            array($main[0], $main[1], $main[2], 1),
             array('тысяча', 'тысячи', 'тысяч', 1),
             array('миллион', 'миллиона', 'миллионов', 0),
             array('миллиард', 'милиарда', 'миллиардов', 0),

@@ -81,10 +81,10 @@ class En extends Base
         }
 
         if ($fraction > 0) {
-            $output .= " point";
             if ($isMoney) {
                 $output .= " " . static::convertNumber($fraction) . ' ' . static::morph($fraction, $second[0], $second[1], $second[2]);;
             } else {
+                $output .= " point";
                 for ($i = 0; $i < strlen($fraction); $i++) {
                     $output .= " " . static::convertDigit($fraction{$i});
                 }
