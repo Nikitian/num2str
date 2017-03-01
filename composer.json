@@ -1,0 +1,22 @@
+{
+    "name": "Nikitian/num2str",
+    "description": "Number to strin converter",
+    "type": "custom-installer",
+    "keywords": [],
+    "license": "MIT",
+    "version": "1.9.8",
+    "authors": [
+        {
+            "name": "Nikitian",
+            "email": "mail@nikitian.ru"
+        }
+    ],
+    "require": {
+        "ext-openssl": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Nikitian\\Num2str\\": "src/"
+        }
+    }
+}
