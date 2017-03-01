@@ -67,12 +67,6 @@ abstract class Base
     }
 
 
-    protected static $valute = [
-        'main' => [],
-        'second' => [],
-    ];
-
-
     /**
      * @param mixed $main string or array for main currency name array('доллар', 'доллара', 'долларов')
      * @param mixed $second string or array for second currency name array('цент', 'цента', 'центов')
