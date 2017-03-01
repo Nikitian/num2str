@@ -276,4 +276,9 @@ class En extends Base
     {
         return static::convertNumber($digit, true, $main, $second);
     }
+
+    protected static $valute = [
+        'main' => [],
+        'second' => [],
+    ];
 }

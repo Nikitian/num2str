@@ -108,4 +108,9 @@ class Ru extends Base
         return static::num2str($digit, true, $main, $second);
     }
 
+    protected static $valute = [
+        'main' => [],
+        'second' => [],
+    ];
+
 }
