@@ -1,5 +1,6 @@
 <?php
 namespace Nikitian\Num2str;
+
 /**
  * English Number Converter - Collection of PHP functions to convert a number
  *                            into English text.
@@ -18,6 +19,10 @@ namespace Nikitian\Num2str;
  */
 class En
 {
+    /**
+     * @param float$number
+     * @return string
+     */
     public static function convertNumber($number)
     {
         if (strpos((string)$number, '.') === false) {
@@ -77,7 +82,11 @@ class En
         return $output;
     }
 
-    public static function convertGroup($index)
+    /**
+     * @param int $index
+     * @return string
+     */
+    protected static function convertGroup($index)
     {
         switch ($index) {
             case 11:
@@ -107,7 +116,13 @@ class En
         }
     }
 
-    public static function convertThreeDigit($digit1, $digit2, $digit3)
+    /**
+     * @param string $digit1
+     * @param string $digit2
+     * @param string $digit3
+     * @return string
+     */
+    protected static function convertThreeDigit($digit1, $digit2, $digit3)
     {
         $buffer = "";
 
@@ -133,7 +148,12 @@ class En
         return $buffer;
     }
 
-    public static function convertTwoDigit($digit1, $digit2)
+    /**
+     * @param string $digit1
+     * @param string $digit2
+     * @return string
+     */
+    protected static function convertTwoDigit($digit1, $digit2)
     {
         if ($digit2 == "0") {
             switch ($digit1) {
@@ -202,6 +222,10 @@ class En
         }
     }
 
+    /**
+     * @param string $digit
+     * @return string
+     */
     public static function convertDigit($digit)
     {
         switch ($digit) {

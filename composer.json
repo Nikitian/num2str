@@ -1,6 +1,6 @@
 {
     "name": "Nikitian/num2str",
-    "description": "Number to strin converter",
+    "description": "Number to string converter",
     "type": "custom-installer",
     "keywords": [],
     "license": "MIT",
@@ -12,10 +12,9 @@
         }
     ],
     "require": {
-        "ext-openssl": "*"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Nikitian\\Num2str\\": "src/"
         }
     }

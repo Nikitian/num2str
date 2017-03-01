@@ -1,5 +1,6 @@
 <?php
 namespace Nikitian\Num2str;
+
 class Ru
 {
     /**
