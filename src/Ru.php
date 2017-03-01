@@ -2,14 +2,19 @@
 namespace Nikitian\Num2str;
 use Nikitian\Num2str\Inc\Base;
 
-class Ru implements Base
+class Ru extends Base
 {
     /**
      * Возвращает сумму прописью
      * @author runcore
      * @uses morph(...)
+     * @param string $num
+     * @param bool $isMoney
+     * @param array $main
+     * @param array $second
+     * @return string
      */
-    public static function num2str($num, $needRub = false)
+    public static function num2str($num, $isMoney = false, $main = [], $second = [])
     {
         $nul = 'ноль';
         $ten = array(
@@ -51,8 +56,8 @@ class Ru implements Base
             'девятьсот'
         );
         $unit = array(// Units
-            array('цент', 'цента', 'центов', 1),
-            array('', '', '', 0),
+            array($second[0], $second[1], $second[2], 1),
+            array($main[0], $main[1], $main[2], 0),
             array('тысяча', 'тысячи', 'тысяч', 1),
             array('миллион', 'миллиона', 'миллионов', 0),
             array('миллиард', 'милиарда', 'миллиардов', 0),
@@ -84,11 +89,11 @@ class Ru implements Base
         } else {
             $out[] = $nul;
         }
-        if ($needRub) {
+        if ($isMoney) {
             $out[] = static::morph(intval($rub), $unit[1][0], $unit[1][1], $unit[1][2]); // rub
         }
         if ($kop > 0) {
-            $out[] = $kop . ($needRub ? (' ' . static::morph($kop, $unit[0][0], $unit[0][1], $unit[0][2])) : ''); // kop
+            $out[] = $kop . ($isMoney ? (' ' . static::morph($kop, $unit[0][0], $unit[0][1], $unit[0][2])) : ''); // kop
         }
         return trim(preg_replace('/ {2,}/', ' ', join(' ', $out)));
     }
@@ -98,24 +103,9 @@ class Ru implements Base
         return static::num2str($string);
     }
 
-    /**
-     * Склоняем словоформу
-     * @ author runcore
-     */
-    public static function morph($n, $f1, $f2, $f5)
+    public static function _money($digit, $main, $second)
     {
-        $n = abs(intval($n)) % 100;
-        if ($n > 10 && $n < 20) {
-            return $f5;
-        }
-        $n = $n % 10;
-        if ($n > 1 && $n < 5) {
-            return $f2;
-        }
-        if ($n == 1) {
-            return $f1;
-        }
-        return $f5;
+        return static::num2str($digit, true, $main, $second);
     }
 
 }

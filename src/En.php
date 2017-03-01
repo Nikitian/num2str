@@ -18,13 +18,16 @@ use Nikitian\Num2str\Inc\Base;
  *   Copyright 2007-2008 Brenton Fletcher. http://bloople.net/num2text
  *   You can use this freely and modify it however you want.
  */
-class En implements Base
+class En extends Base
 {
     /**
-     * @param float$number
+     * @param float $number
+     * @param bool $isMoney
+     * @param array $main
+     * @param array $second
      * @return string
      */
-    protected static function convertNumber($number)
+    protected static function convertNumber($number, $isMoney = false, $main = [], $second = [])
     {
         if (strpos((string)$number, '.') === false) {
             $integer = $number;
@@ -73,10 +76,18 @@ class En implements Base
             $output = rtrim($output, ", ");
         }
 
+        if ($isMoney) {
+            $output .= " " . static::convertNumber($integer) . ' ' . static::morph($integer, $main[0], $main[1], $main[2]);;
+        }
+
         if ($fraction > 0) {
             $output .= " point";
-            for ($i = 0; $i < strlen($fraction); $i++) {
-                $output .= " " . static::convertDigit($fraction{$i});
+            if ($isMoney) {
+                $output .= " " . static::convertNumber($fraction) . ' ' . static::morph($fraction, $second[0], $second[1], $second[2]);;
+            } else {
+                for ($i = 0; $i < strlen($fraction); $i++) {
+                    $output .= " " . static::convertDigit($fraction{$i});
+                }
             }
         }
 
@@ -115,6 +126,7 @@ class En implements Base
             case 0:
                 return "";
         }
+        return "";
     }
 
     /**
@@ -221,6 +233,7 @@ class En implements Base
                 }
             }
         }
+        return "";
     }
 
     /**
@@ -251,10 +264,16 @@ class En implements Base
             case "9":
                 return "nine";
         }
+        return "";
     }
 
     public static function convert($string)
     {
         return static::convertNumber($string);
+    }
+
+    public static function _money($digit, $main, $second)
+    {
+        return static::convertNumber($digit, true, $main, $second);
     }
 }
