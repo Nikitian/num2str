@@ -1,7 +1,8 @@
 <?php
 namespace Nikitian\Num2str;
+use Inc\Base;
 
-class Ru
+class Ru implements Base
 {
     /**
      * Возвращает сумму прописью
@@ -90,6 +91,11 @@ class Ru
             $out[] = $kop . ($needRub ? (' ' . static::morph($kop, $unit[0][0], $unit[0][1], $unit[0][2])) : ''); // kop
         }
         return trim(preg_replace('/ {2,}/', ' ', join(' ', $out)));
+    }
+
+    public static function convert($string)
+    {
+        return static::num2str($string);
     }
 
     /**

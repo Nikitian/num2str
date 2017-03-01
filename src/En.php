@@ -1,5 +1,6 @@
 <?php
 namespace Nikitian\Num2str;
+use Inc\Base;
 
 /**
  * English Number Converter - Collection of PHP functions to convert a number
@@ -17,13 +18,13 @@ namespace Nikitian\Num2str;
  *   Copyright 2007-2008 Brenton Fletcher. http://bloople.net/num2text
  *   You can use this freely and modify it however you want.
  */
-class En
+class En implements Base
 {
     /**
      * @param float$number
      * @return string
      */
-    public static function convertNumber($number)
+    protected static function convertNumber($number)
     {
         if (strpos((string)$number, '.') === false) {
             $integer = $number;
@@ -250,5 +251,10 @@ class En
             case "9":
                 return "nine";
         }
+    }
+
+    public static function convert($string)
+    {
+        return static::convertNumber($string);
     }
 }
