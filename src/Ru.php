@@ -1,6 +1,6 @@
 <?php
 namespace Nikitian\Num2str;
-use Inc\Base;
+use Nikitian\Num2str\Inc\Base;
 
 class Ru implements Base
 {

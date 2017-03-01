@@ -1,6 +1,6 @@
 <?php
 namespace Nikitian\Num2str;
-use Inc\Base;
+use Nikitian\Num2str\Inc\Base;
 
 /**
  * English Number Converter - Collection of PHP functions to convert a number

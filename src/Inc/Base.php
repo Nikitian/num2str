@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Inc;
+namespace Nikitian\Num2str\Inc;
 
 
 interface Base
