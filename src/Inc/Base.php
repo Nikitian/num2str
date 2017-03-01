@@ -74,8 +74,8 @@ abstract class Base
 
 
     /**
-     * @param mixed $main string or array for main currency name
-     * @param mixed $second string or array for second currency name
+     * @param mixed $main string or array for main currency name array('доллар', 'доллара', 'долларов')
+     * @param mixed $second string or array for second currency name array('цент', 'цента', 'центов')
      * @return bool
      * @throws \Exception
      */
